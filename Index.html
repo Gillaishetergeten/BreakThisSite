@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abel's Goofy Executables</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        textarea {
+            display: none; /* Hide the textarea */
+        }
+    </style>
+</head>
+<body>
+    <h1>Abel's Goofy Executables</h1>
+    <p>Click a button below to copy the code:</p>
+    <button onclick="copyDVDCode()">DVD-logo</button>
+    <button onclick="copyShrekCode()">Shrek</button>
+    <button onclick="copyKachowCode()">Kachow</button>
+    <button onclick="copyMinecraftCode()">Minecraft</button>
+
+    <!-- Hidden textarea for DVD-logo code -->
+    <textarea id="dvdCode">
+(function() {
+    // Create a container for the shrunken website
+    const container = document.createElement('div');
+    container.style.position = 'fixed';
+    container.style.top = '0';
+    container.style.left = '0';
+    container.style.width = '50%'; // Shrink to 50% of original size
+    container.style.height = '50%'; // Shrink to 50% of original size
+    container.style.transformOrigin = 'top left';
+    container.style.overflow = 'hidden';
+    container.style.zIndex = '9999';
+    container.style.backgroundColor = 'white'; // Optional: Add background color
+
+    // Create a wrapper to hold the body's children
+    const wrapper = document.createElement('div');
+    while (document.body.firstChild) {
+        wrapper.appendChild(document.body.firstChild);
+    }
+
+    // Append the wrapper to the container
+    container.appendChild(wrapper);
+
+    // Append the container to the body
+    document.body.appendChild(container);
+
+    // Bouncing logic
+    let posX = 0;
+    let posY = 0;
+    let velocityX = 2;
+    let velocityY = 2;
+    const speed = 2;
+
+    function bounce() {
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const containerWidth = container.offsetWidth;
+        const containerHeight = container.offsetHeight;
+
+        posX += velocityX;
+        posY += velocityY;
+
+        // Check for collision with the right or left edge
+        if (posX + containerWidth > windowWidth || posX < 0) {
+            velocityX = -velocityX;
+        }
+
+        // Check for collision with the bottom or top edge
+        if (posY + containerHeight > windowHeight || posY < 0) {
+            velocityY = -velocityY;
+        }
+
+        // Update the position of the container
+        container.style.left = `${posX}px`;
+        container.style.top = `${posY}px`;
+
+        requestAnimationFrame(bounce);
+    }
+
+    // Start the bouncing animation
+    bounce();
+})();
+    </textarea>
+
+    <!-- Hidden textarea for Shrek code -->
+    <textarea id="shrekCode">
+// Function to replace the clicked element with an image of Shrek
+function replaceWithShrek(event) {
+    // Create a new image element
+    const shrekImage = document.createElement('img');
+    
+    // Set the source of the image to a Shrek picture
+    shrekImage.src = 'https://upload.wikimedia.org/wikipedia/en/4/4d/Shrek_%28character%29.png';
+    
+    // Set some styles to make the image fit well
+    shrekImage.style.maxWidth = '100%';
+    shrekImage.style.height = 'auto';
+    
+    // Replace the clicked element with the Shrek image
+    event.target.replaceWith(shrekImage);
+}
+
+// Add a click event listener to the document
+document.addEventListener('click', function(event) {
+    // Check if the clicked element is not the body or html
+    if (event.target !== document.body && event.target !== document.documentElement) {
+        replaceWithShrek(event);
+    }
+});
+
+console.log('Shrekify activated! Click any object to turn it into Shrek.');
+    </textarea>
+
+    <!-- Hidden textarea for Kachow code -->
+    <textarea id="kachowCode">
+// Create a new image element for Lightning McQueen
+const mcqueen = document.createElement('img');
+mcqueen.src = 'https://www.pngall.com/wp-content/uploads/14/Lightning-Mcqueen-PNG-Photos.png'; // New image URL of Lightning McQueen
+mcqueen.style.position = 'fixed';
+mcqueen.style.width = '100px'; // Adjust size as needed
+mcqueen.style.height = 'auto';
+mcqueen.style.transition = 'left 0.1s, top 0.1s'; // Smooth movement
+mcqueen.style.pointerEvents = 'none'; // Ensure the image doesn't interfere with clicks
+document.body.appendChild(mcqueen);
+
+// Function to make Lightning McQueen follow the mouse
+document.addEventListener('mousemove', function(event) {
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    // Calculate the position for Lightning McQueen to follow the mouse
+    const mcqueenX = mouseX - mcqueen.width / 2;
+    const mcqueenY = mouseY - mcqueen.height / 2;
+
+    // Update Lightning McQueen's position
+    mcqueen.style.left = `${mcqueenX}px`;
+    mcqueen.style.top = `${mcqueenY}px`;
+});
+
+console.log('Lightning McQueen is now chasing your mouse! 🚗💨');
+    </textarea>
+
+    <!-- Hidden textarea for Minecraft code -->
+    <textarea id="minecraftCode">
+(function () {
+    // Physics settings
+    let objects = [];
+    let gravity = 0.5;
+    let friction = 0.99;
+    let bounce = 0.6;
+
+    // Array of possible image URLs (updated first image)
+    const images = [
+        'https://i.pinimg.com/736x/29/72/4b/29724bea77050ea1bbc34135285a9a7d.jpg', // New first image
+        'https://i.redd.it/72m4shb3qh221.jpg', // Random image
+        'https://i.pinimg.com/originals/d3/5c/0c/d35c0c58fff90987e9532e808ded0008.jpg', // New Stone Block
+        'https://thumbs.dreamstime.com/b/pixel-minecraft-style-land-block-background-concept-game-pixelated-seamless-square-beige-material-vector-illustration-212305525.jpg' // Pixelated Land Block
+    ];
+
+    // Function to randomly select an image from the array
+    function getRandomImage() {
+        const randomIndex = Math.floor(Math.random() * images.length);
+        return images[randomIndex];
+    }
+
+    // Function to create a block (with random image)
+    function spawnBlock(x, y) {
+        let img = document.createElement("img");
+        img.src = getRandomImage();
+        img.style.position = "absolute";
+        img.style.width = "50px";  // Image width
+        img.style.height = "50px"; // Image height
+        img.style.left = `${x}px`;
+        img.style.top = `${y}px`;
+        img.style.cursor = "grab";
+        document.body.appendChild(img);
+
+        let obj = {
+            element: img,
+            x: x,
+            y: y,
+            width: 50,   // Hitbox width matches image size
+            height: 50,  // Hitbox height matches image size
+            velocityX: (Math.random() - 0.5) * 5, // Random horizontal speed
+            velocityY: 0,
+            isDragging: false
+        };
+
+        img.onmousedown = (e) => startDrag(e, obj);
+        objects.push(obj);
+    }
+
+    // Spawn multiple blocks with random images
+    for (let i = 0; i < 10; i++) {
+        spawnBlock(Math.random() * window.innerWidth * 0.8, Math.random() * window.innerHeight * 0.5);
+    }
+
+    // Dragging logic
+    let draggedObject = null;
+    let offsetX = 0, offsetY = 0;
+
+    function startDrag(e, obj) {
+        draggedObject = obj;
+        offsetX = e.clientX - obj.x;
+        offsetY = e.clientY - obj.y;
+        obj.isDragging = true;
+        obj.velocityX = 0;
+        obj.velocityY = 0;
+        obj.element.style.cursor = "grabbing";
+    }
+
+    document.onmouseup = () => {
+        if (draggedObject) {
+            draggedObject.isDragging = false;
+            draggedObject.element.style.cursor = "grab";
+        }
+        draggedObject = null;
+    };
+
+    document.onmousemove = (e) => {
+        if (draggedObject) {
+            draggedObject.x = e.clientX - offsetX;
+            draggedObject.y = e.clientY - offsetY;
+        }
+    };
+
+    // Collision detection
+    function checkCollision(objA, objB) {
+        return (
+            objA.x < objB.x + objB.width &&
+            objA.x + objA.width > objB.x &&
+            objA.y < objB.y + objB.height &&
+            objA.y + objA.height > objB.y
+        );
+    }
+
+    // Collision response
+    function resolveCollision(objA, objB) {
+        let overlapX = Math.min(
+            objA.x + objA.width - objB.x,
+            objB.x + objB.width - objA.x
+        );
+        let overlapY = Math.min(
+            objA.y + objA.height - objB.y,
+            objB.y + objB.height - objA.y
+        );
+
+        if (overlapX < overlapY) {
+            // Horizontal collision
+            if (objA.x < objB.x) {
+                objA.x -= overlapX / 2;
+                objB.x += overlapX / 2;
+            } else {
+                objA.x += overlapX / 2;
+                objB.x -= overlapX / 2;
+            }
+            objA.velocityX *= -bounce;
+            objB.velocityX *= -bounce;
+        } else {
+            // Vertical collision
+            if (objA.y < objB.y) {
+                objA.y -= overlapY / 2;
+                objB.y += overlapY / 2;
+            } else {
+                objA.y += overlapY / 2;
+                objB.y -= overlapY / 2;
+            }
+            objA.velocityY *= -bounce;
+            objB.velocityY *= -bounce;
+        }
+    }
+
+    // Physics loop
+    function updatePhysics() {
+        for (let i = 0; i < objects.length; i++) {
+            let objA = objects[i];
+
+            if (!objA.isDragging) {
+                objA.velocityY += gravity; // Apply gravity
+                objA.velocityX *= friction; // Apply friction
+                objA.velocityY *= friction;
+
+                objA.x += objA.velocityX;
+                objA.y += objA.velocityY;
+
+                // Collision with window boundaries
+                if (objA.x < 0) {
+                    objA.x = 0;
+                    objA.velocityX *= -bounce;
+                }
+                if (objA.x + objA.width > window.innerWidth) {
+                    objA.x = window.innerWidth - objA.width;
+                    objA.velocityX *= -bounce;
+                }
+                if (objA.y + objA.height > window.innerHeight) {
+                    objA.y = window.innerHeight - objA.height;
+                    objA.velocityY *= -bounce;
+                }
+            }
+
+            // Check for collisions between objects
+            for (let j = i + 1; j < objects.length; j++) {
+                let objB = objects[j];
+
+                if (checkCollision(objA, objB)) {
+                    resolveCollision(objA, objB);
+                }
+            }
+
+            // Update position
+            objA.element.style.left = `${objA.x}px`;
+            objA.element.style.top = `${objA.y}px`;
+        }
+
+        requestAnimationFrame(updatePhysics);
+    }
+
+    // Add more blocks when the spacebar is pressed
+    document.addEventListener("keydown", function(event) {
+        if (event.code === "Space") {
+            for (let i = 0; i < 5; i++) {  // Spawn 5 new blocks on each press
+                spawnBlock(Math.random() * window.innerWidth * 0.8, Math.random() * window.innerHeight * 0.5);
+            }
+        }
+    });
+
+    updatePhysics();
+})();
+    </textarea>
+
+    <script>
+        // Function to copy the DVD-logo code
+        async function copyDVDCode() {
+            const dvdCodeTextarea = document.getElementById('dvdCode');
+            try {
+                await navigator.clipboard.writeText(dvdCodeTextarea.value);
+                alert('DVD-logo code copied to clipboard!');
+            } catch (err) {
+                console.error('Failed to copy code: ', err);
+                alert('Failed to copy code. Please manually copy the code from the textarea.');
+            }
+        }
+
+        // Function to copy the Shrek code
+        async function copyShrekCode() {
+            const shrekCodeTextarea = document.getElementById('shrekCode');
+            try {
+                await navigator.clipboard.writeText(shrekCodeTextarea.value);
+                alert('Shrek code copied to clipboard!');
+            } catch (err) {
+                console.error('Failed to copy code: ', err);
+                alert('Failed to copy code. Please manually copy the code from the textarea.');
+            }
+        }
+
+        // Function to copy the Kachow code
+        async function copyKachowCode() {
+            const kachowCodeTextarea = document.getElementById('kachowCode');
+            try {
+                await navigator.clipboard.writeText(kachowCodeTextarea.value);
+                alert('Kachow code copied to clipboard!');
+            } catch (err) {
+                console.error('Failed to copy code: ', err);
+                alert('Failed to copy code. Please manually copy the code from the textarea.');
+            }
+        }
+
+        // Function to copy the Minecraft code
+        async function copyMinecraftCode() {
+            const minecraftCodeTextarea = document.getElementById('minecraftCode');
+            try {
+                await navigator.clipboard.writeText(minecraftCodeTextarea.value);
+                alert('Minecraft code copied to clipboard!');
+            } catch (err) {
+                console.error('Failed to copy code: ', err);
+                alert('Failed to copy code. Please manually copy the code from the textarea.');
+            }
+        }
+    </script>
+</body>
+</html>
